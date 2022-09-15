@@ -5,11 +5,14 @@ import java.util.Scanner;
 public class Userinterface {
     Scanner sc = new Scanner(System.in); // brugerens input.
     Database superHeroDatabase = new Database();
+    public void startProgram() {
 
-    int brugerValg = 0;
+        int brugerValg = 0;
 
         do {
-        System.out.println("""
+
+
+            System.out.println("""
                     Velkommen to the Superhero Collector.
                     1. Create superhero.
                     2. Show superheroes made.
@@ -17,10 +20,20 @@ public class Userinterface {
                     9. Exit.
                     """);
 
-        brugerValg = sc.nextInt();
-        sc.nextLine();
+            brugerValg = sc.nextInt();
+            sc.nextLine();
+        }
+        while (brugerValg != 9);
+
+        håndtereBrugvalg (brugerValg);
+    }
+
+
+
 
         // Jeg laver en if lykke, som giver brugeren flere valg muligheder efter de har indtastet deres superhero
+
+       public void håndtereBrugvalg(int brugerValg) {
         if (brugerValg == 1) {
             System.out.println("Superheroes name?");
             String name = sc.nextLine();
@@ -68,8 +81,8 @@ public class Userinterface {
         double searchStrength = sc.nextDouble();
         superHeroDatabase.addSuperheroes(searchName, searchIsHuman, searchSuperpower, searchCreationYear, searchStrength);
     }
-        while (brugerValg != 9);
+
 
 }
-}
-}
+
+
