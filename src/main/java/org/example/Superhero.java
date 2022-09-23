@@ -7,7 +7,8 @@ public class Superhero {
     private String superPower;
     private int creationYear;
     private double strength;
-   //Konstruktør opretter obejtker
+
+    //Konstruktør opretter obejtker
     public Superhero(String name, boolean isHuman, String superPower, int creationYear, double strength) {
         this.name = name;
         this.isHuman = isHuman;
@@ -19,6 +20,7 @@ public class Superhero {
     // get metode
     public Superhero(String stark, String avengers, boolean b, int strength) {
     }
+
     public String getName() {
         return name;
     }
@@ -26,6 +28,7 @@ public class Superhero {
     public boolean getisHuman() {
         return isHuman;
     }
+
     public String getSuperPower() {
         return superPower;
     }

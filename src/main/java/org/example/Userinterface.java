@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Userinterface {
     Scanner sc = new Scanner(System.in); // brugerens input.
     Database superHeroDatabase = new Database();
+
     public void startProgram() {
 
         int brugerValg = 0;
@@ -25,15 +26,12 @@ public class Userinterface {
         }
         while (brugerValg != 9);
 
-        håndtereBrugvalg (brugerValg);
+        håndtereBrugvalg(brugerValg);
     }
 
+    // Jeg laver en if lykke, som giver brugeren flere valg muligheder efter de har indtastet deres superhero
 
-
-
-        // Jeg laver en if lykke, som giver brugeren flere valg muligheder efter de har indtastet deres superhero
-
-       public void håndtereBrugvalg(int brugerValg) {
+    public void håndtereBrugvalg(int brugerValg) {
         if (brugerValg == 1) {
             System.out.println("Superheroes name?");
             String name = sc.nextLine();
@@ -47,6 +45,7 @@ public class Userinterface {
             System.out.println("Superheroes power");
             String superPower = sc.nextLine();
             System.out.println("Superheros creation year");
+            //Indfører en scanner
             int creationYear = sc.nextInt();
             System.out.println("Superhoeros strength");
             double strength = sc.nextDouble();
@@ -71,8 +70,7 @@ public class Userinterface {
                 System.out.println("Strength" + heroes.getStrengh());
             }
 
-        }
-        else if (brugerValg == 3);
+        } else if (brugerValg == 3) ;
         System.out.println("Søg på et helts civil navn: ");
         String searchName = sc.nextLine();
         boolean searchIsHuman = sc.nextBoolean();
@@ -82,7 +80,18 @@ public class Userinterface {
         superHeroDatabase.addSuperheroes(searchName, searchIsHuman, searchSuperpower, searchCreationYear, searchStrength);
     }
 
-
+    // Opretter while lykke, som viser hivs inputtet er ugyldigt
+    public int reedIntger() {
+        while (!sc.hasNextInt()) {
+            String text = sc.next();
+            System.out.println("Ugyldigt input" + "" + "Anvend et tal i stedet");
+        }
+        int result = sc.nextInt();
+        return result;
+    }
 }
+
+
+
 
 
