@@ -3,95 +3,234 @@ package org.example;
 import java.util.Scanner;
 
 public class Userinterface {
-    Scanner sc = new Scanner(System.in); // brugerens input.
-    Database superHeroDatabase = new Database();
+    private Controller controller = new Controller();
+
+
+    Scanner scanner = new Scanner(System.in);
 
     public void startProgram() {
+        int userChoice = -1;
 
-        int brugerValg = 0;
+        System.out.println("Welcome to Superhero! \n" +
+                "_______________");
 
-        do {
-
-
-            System.out.println("""
-                    Velkommen to the Superhero Collector.
-                    1. Create superhero.
-                    2. Show superheroes made.
-                    3. Find superhero.
-                    9. Exit.
+        while (userChoice != 9) {
+            System.out.println("""                  
+                    1. Add Superhero.Superhero
+                    2. Superhero.Superhero List
+                    3. Search Superhero.Superhero
+                    4. Edit Superhero.Superhero
+                    5. Delete hero
+                    9. End Program
                     """);
 
-            brugerValg = sc.nextInt();
-            sc.nextLine();
-        }
-        while (brugerValg != 9);
+            userChoice = scanner.nextInt();
+            scanner.nextLine(); // Håndtering af Scanner bug
+            UserChoice(userChoice);
 
-        håndtereBrugvalg(brugerValg);
+        }
     }
 
-    // Jeg laver en if lykke, som giver brugeren flere valg muligheder efter de har indtastet deres superhero
+    // Brugerens valgmuligheder
 
-    public void håndtereBrugvalg(int brugerValg) {
-        if (brugerValg == 1) {
-            System.out.println("Superheroes name?");
-            String name = sc.nextLine();
-            System.out.println("Is superhero human?");
-            String isHumanString = sc.next();
-            boolean isHuman = false;
-            if (isHumanString.equalsIgnoreCase("j")) {
-                isHuman = true;
-            }
-            sc.nextLine();
-            System.out.println("Superheroes power");
-            String superPower = sc.nextLine();
-            System.out.println("Superheros creation year");
-            //Indfører en scanner
-            int creationYear = sc.nextInt();
-            System.out.println("Superhoeros strength");
-            double strength = sc.nextDouble();
+    public void UserChoice(int userChoice) {
+        if (userChoice == 1)
+            addSuperhero();
+        else if (userChoice == 2)
+            superheroList();
+        else if (userChoice == 3)
+            searchInput();
+        else if (userChoice == 4)
+            editSuperhero();
+        else if (userChoice == 5)
+            deleteHero();
+    }
 
-            superHeroDatabase.addSuperheroes(name, isHuman, superPower, creationYear, strength);
+    // Tilføjer superhelte nedenfor
+
+    public void addSuperhero() {
+        System.out.println("Enter the superhero's real name:");
+        String name = scanner.nextLine();
+
+        System.out.println("Enter the superhero's power: ");
+        String power = scanner.nextLine();
+
+        System.out.println("Enter the superhero's year of publication: ");
+        // int year = scanner.nextInt();
+        int year = readIntger();
+
+        System.out.println("Enter the superhero's strength:");
+        // double strength = scanner.nextDouble();
+        double strength = readDouble();
+        controller.databse.addSuperheroes(name, true, power, year, strength);
+    }
+
+    // Forekommer en list af suoerhelte
+    public void superheroList() {
+
+        if (controller.databse.getHeroDatabase().size() == 0) {
+            System.out.println("There's no Superhero.Superhero registered...\n");
         } else {
-            System.exit(0);
-        }
-        // Anden if lykke som viser hivs superheroen er et menneske, er der 2 valgmuligheder
-        brugerValg = sc.nextInt();
-        sc.nextLine();
-        if (brugerValg == 2) {
-            for (Superhero heroes : superHeroDatabase.getHeroDatabase()) {
-                System.out.println("Superhero name" + heroes.getName());
-                if (heroes.getisHuman() == true) {
-                    System.out.println("\nHuman?: Yes");
-                } else {
-                    System.out.println("\nHuman?: No");
-                }
-                System.out.println("Superpower:" + heroes.getSuperPower());
-                System.out.println("Creation year" + heroes.getCreationYear());
-                System.out.println("Strength" + heroes.getStrengh());
+            System.out.println("List of Superhero.Superhero's registered\n");
+            for (Superhero superhero : controller.databse.getHeroDatabase()) {
+                System.out.println("Name:" + " " + superhero.getName() + " " + "Human:" + " " + superhero.getisHuman() + " " + "Superpower:" + " " + superhero.getSuperPower() + " " + "Year of creation" + " " + superhero.getCreationYear() + " " + "Strength" + " " + superhero.getStrength());
             }
-
-        } else if (brugerValg == 3) ;
-        System.out.println("Søg på et helts civil navn: ");
-        String searchName = sc.nextLine();
-        boolean searchIsHuman = sc.nextBoolean();
-        String searchSuperpower = sc.nextLine();
-        int searchCreationYear = sc.nextInt();
-        double searchStrength = sc.nextDouble();
-        superHeroDatabase.addSuperheroes(searchName, searchIsHuman, searchSuperpower, searchCreationYear, searchStrength);
+        }
     }
 
-    // Opretter while lykke, som viser hivs inputtet er ugyldigt
-    public int reedIntger() {
-        while (!sc.hasNextInt()) {
-            String text = sc.next();
-            System.out.println("Ugyldigt input" + "" + "Anvend et tal i stedet");
+    // søgning af superhelte.
+
+    public void searchInput() {
+        System.out.println("Enter Superhero.Superhero name: ");
+        String findHero = scanner.nextLine();
+        Superhero superhero = controller.databse.findSuperhero(findHero);
+        if (superhero != null) {
+            System.out.println("Information" + "\n Name:" + " " + superhero.getName() + " " + "Human:" + " " + superhero.getisHuman() + " " + "Superpower" + " " + superhero.getSuperPower() + " " + "Year of creation" + " " + superhero.getCreationYear() + " " + "Strength" + " " + superhero.getStrength());
+        } else {
+            System.out.println("Found nothing with this name.");
         }
-        int result = sc.nextInt();
+    }
+
+    // Så bruger kan redigere på fremtidige superhelte.
+
+    public void editSuperhero() {
+
+        int editUserChoice = -1;
+
+        System.out.println("""
+                                
+                Welcome to superhero edit tool!
+                                
+                """);
+        while (editUserChoice != 9) {
+            System.out.println("""
+                    1. Edit 
+                    9. Back to main menu
+                    """);
+
+            editUserChoice = readIntger();
+            scanner.nextLine();
+            editSuperhero(editUserChoice);
+        }
+
+    }
+
+    private void editSuperhero(int editUserChoice) {
+        if (editUserChoice == 1)
+            editTool();
+        else if (editUserChoice != 9) {
+            System.out.println("Please try again, choose between 1 or 9.");
+        }
+    }
+
+    public void editTool() {
+
+        if (controller.databse.getHeroDatabase().size() == 0) {
+            System.out.println("There's no Superhero.Superhero registered");
+        } else {
+            System.out.println("List of Superhero.Superhero's registered");
+
+            for (int i = 0; i < controller.databse.getHeroDatabase().size(); i++) {
+                System.out.println(i + 1 + " Superhero.Superhero: \n" + controller.databse.getHeroDatabase().get(i));
+            }
+
+
+            System.out.println("Enter which superhero you want to change");
+            int numb = scanner.nextInt();
+            Superhero editHero;
+            scanner.nextLine();
+
+            if (numb - 1 >= controller.databse.getHeroDatabase().size()) {
+                System.out.println("Invalid data, try again");
+            } else {
+                editHero = controller.databse.getHeroDatabase().get(numb - 1);
+                System.out.println("Edit superhero" + editHero.getName() + " " + editHero.getSuperPower() + " " + editHero.getCreationYear() + " " + editHero.getStrength());
+
+                System.out.println("Edit superhero and press enter" + " " + "If no need for editing press enter");
+
+
+                System.out.println("Current name: " + editHero.getName());
+                System.out.println("Please enter the new name below");
+                String newName = scanner.nextLine();
+                if (!newName.isEmpty()) {
+                    editHero.setName();
+                }
+                System.out.println("Current Super Power: " + editHero.getSuperPower());
+                System.out.println("Please enter the updated superpower");
+                String newPower = scanner.nextLine();
+                if (!newPower.isEmpty()) {
+                    editHero.setSuperPower();
+                }
+
+                System.out.println("Current Year of publication: " + editHero.getCreationYear());
+                System.out.println("Please enter updated creation year");
+                String newYear = scanner.nextLine();
+                if (!newYear.isEmpty()) {
+                    editHero.setCreationYear();
+                }
+
+                System.out.println("Strength: " + editHero.getStrength());
+                System.out.println("Enter the updated strength");
+                String newStrength = scanner.nextLine();
+                if (!newStrength.isEmpty()) {
+                    editHero.setStrength();
+                }
+            }
+        }
+    }
+
+    // Tilføjer noget briger venlighed, som sørger for der ikke forekommer errors.
+
+    public int readIntger() {
+        while (!scanner.hasNextInt()) {
+            String text = scanner.next();
+            System.out.println(text + " " + "Invalid data, input a number please.");
+        }
+        int result = scanner.nextInt();
         return result;
     }
+
+
+    public int readDouble() {
+        while (!scanner.hasNextDouble()) {
+            String text = scanner.next();
+            System.out.println(text + " " + "Invalid data, input a number please.");
+        }
+        int result = scanner.nextInt();
+        return result;
+    }
+
+
+    // Tilføjere en deltehero, som kan fjeren superheroes igen.
+
+    private void deleteHero() {
+
+        if (controller.databse.getHeroDatabase().isEmpty()) {
+            System.out.println("No heroes found in our database");
+        } else {
+
+            System.out.println("Choose hero you want to delete: \n");
+            for (Superhero hero :controller.databse.getHeroDatabase()) {
+                System.out.println(controller.databse.getHeroDatabase().indexOf(hero) + 1 + ". " + hero.getName());
+            }
+
+
+            int RI = readIntger();
+            System.out.println("Are you sure, you want delete this superhero? " + controller.databse.getHeroDatabase().get(RI - 1).getName() + "?\n1. Delete " + controller.databse.getHeroDatabase().get(RI - 1).getName() + "\n2. Dont delete");
+
+            int v2 = readIntger();
+            switch (v2) {
+                case 1:
+                    controller.databse.deleteHero(RI);
+                case 2:
+                    System.out.println("Going back");
+                    break;
+                default:
+                    System.out.println("Input is not valid");
+                    break;
+
+
+            }
+        }
+    }
 }
-
-
-
-
-

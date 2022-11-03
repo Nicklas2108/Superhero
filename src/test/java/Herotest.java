@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
+
 public class Herotest {
     private Superhero s;
     void setup() {
@@ -22,4 +23,4 @@ public class Herotest {
     private void assertEquals(String superPower) {
     }
 }
-
+// Kan ikke kører programmet, fordi min herotest ligger forkert

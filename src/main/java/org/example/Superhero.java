@@ -24,6 +24,9 @@ public class Superhero {
     public String getName() {
         return name;
     }
+    public String setName() {
+        return name;
+    }
 
     public boolean getisHuman() {
         return isHuman;
@@ -33,13 +36,33 @@ public class Superhero {
         return superPower;
     }
 
+    public String setSuperpower(){
+        return superPower;
+    }
+
     public int getCreationYear() {
         return creationYear;
     }
 
-    public double getStrengh() {
+    public int setCreationYear(){
+        return creationYear;
+    }
+
+    public double getStrength() {
         return strength;
     }
+
+    public double setStrength(){
+        return strength;
+    }
+
+
+    // ToString printer information ud om en superhelt
+    public String toString() {
+        return "Real name: " + name + "\nSuperpower: " + superPower + "\nYear of publication: " + creationYear + "\nStrength: " + strength + "\n";
+
+    }
 }
+
 
 

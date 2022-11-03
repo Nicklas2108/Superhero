@@ -5,9 +5,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
-        Userinterface u1 = new Userinterface();
-        u1.startProgram();
+        Userinterface ui = new Userinterface();
+        ui.startProgram();
 
     }
 }
