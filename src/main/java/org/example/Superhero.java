@@ -24,6 +24,7 @@ public class Superhero {
     public String getName() {
         return name;
     }
+
     public String setName() {
         return name;
     }
@@ -36,7 +37,7 @@ public class Superhero {
         return superPower;
     }
 
-    public String setSuperpower(){
+    public String setSuperpower() {
         return superPower;
     }
 
@@ -44,7 +45,7 @@ public class Superhero {
         return creationYear;
     }
 
-    public int setCreationYear(){
+    public int setCreationYear() {
         return creationYear;
     }
 
@@ -52,7 +53,7 @@ public class Superhero {
         return strength;
     }
 
-    public double setStrength(){
+    public double setStrength() {
         return strength;
     }
 
@@ -63,6 +64,8 @@ public class Superhero {
 
     }
 }
+
+
 
 
 

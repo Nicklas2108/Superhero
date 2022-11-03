@@ -41,10 +41,7 @@ public class Database {
         return soegerresultat;
     }
 
-    public void addSuperheroes (String name,boolean isHuman, String superPower,int creationYear, double strength){
-        Superhero superhero = new Superhero(name, isHuman, superPower, creationYear, strength);
-        heroDatabase.add(superhero);
-    }
+
 
     public ArrayList<Superhero> getHeroDatabase() {
         return heroDatabase;
@@ -52,6 +49,10 @@ public class Database {
 
      public void addToDatabase(String name, boolean isHuman, String superPower, int creationYear, double strength) {
         heroDatabase.add(new Superhero(name, isHuman, superPower, creationYear, strength));
+
+    }
+    public ArrayList<Superhero> getSuperheroes() {
+        return getSuperheroes();
     }
 
 
@@ -63,10 +64,7 @@ public class Database {
     public ArrayList<Superhero> editSuperhero () {
         return heroDatabase;
     }
-    public void editSuperhero (String name,boolean isHuman, String superPower,int creationYear, double strength){
-        Superhero editSuperhero = new Superhero(name,isHuman, superPower, creationYear, strength);
 
-    }
 
     public void deleteHero(int heroToDelete) {
 
@@ -76,6 +74,7 @@ public class Database {
 
         heroDatabase.remove(deleteOnIndex);
     }
+
 
 }
 
