@@ -13,7 +13,7 @@ public class Database {
         Superhero s1 = new Superhero("Stark", "Intelligent", false, 1925);
         Superhero s2 = new Superhero("Hulk", "Ultra Strength", true, 1950);
         Superhero s3 = new Superhero("Batman", "High Teknologi And Rich", false, 2005);
-        Superhero s4 = new Superhero("Spiderman", "Fast and Smarth", true, 2006);
+        Superhero s4 = new Superhero("Spiderman", "Fast and Smart", true, 2006);
         //Laver en arrayliste som printer superheroes ud
 
         heroDatabase = new ArrayList<Superhero>(List.of(s1, s2, s3, s4));
@@ -41,8 +41,6 @@ public class Database {
         return soegerresultat;
     }
 
-
-
     public ArrayList<Superhero> getHeroDatabase() {
         return heroDatabase;
     }
@@ -65,7 +63,6 @@ public class Database {
         return heroDatabase;
     }
 
-
     public void deleteHero(int heroToDelete) {
 
         int deleteOnIndex = heroToDelete - 1;
@@ -74,8 +71,14 @@ public class Database {
 
         heroDatabase.remove(deleteOnIndex);
     }
+    public String superheroArray() {
+        StringBuilder heroBuilder = new StringBuilder();
 
-
+        for (Superhero superhero : heroDatabase) {
+            heroBuilder.append(String.format("'%s;%s;%s;%s;%s\n", superhero.getName(), superhero.getisHuman(), superhero.getSuperPower(), superhero.getCreationYear(), superhero.getStrength()));
+        }
+        return heroBuilder.toString();
+    }
 }
 
 

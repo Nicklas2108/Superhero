@@ -27,7 +27,6 @@ public class Userinterface {
             userChoice = scanner.nextInt();
             scanner.nextLine(); // Håndtering af Scanner bug
             UserChoice(userChoice);
-
         }
     }
 
@@ -112,7 +111,6 @@ public class Userinterface {
             scanner.nextLine();
             editSuperhero(editUserChoice);
         }
-
     }
 
     private void editSuperhero(int editUserChoice) {
@@ -226,8 +224,6 @@ public class Userinterface {
                 default:
                     System.out.println("Input is not valid");
                     break;
-
-
             }
         }
     }
