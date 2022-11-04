@@ -1,4 +1,5 @@
-package org.example;
+package org.example.UI;
+import org.example.Superhero;
 
 import java.util.Scanner;
 
@@ -15,11 +16,11 @@ public class Userinterface {
 
         while (userChoice != 9) {
             System.out.println("""                  
-                    1. Add Superhero.Superhero
-                    2. Superhero.Superhero List
-                    3. Search Superhero.Superhero
-                    4. Edit Superhero.Superhero
-                    5. Delete hero
+                    1. Add Superhero
+                    2. Superhero List
+                    3. Search Superhero
+                    4. Edit Superhero
+                    5. Delete Hero
                     9. End Program
                     """);
 
@@ -147,7 +148,6 @@ public class Userinterface {
 
                 System.out.println("Edit superhero and press enter" + " " + "If no need for editing press enter");
 
-
                 System.out.println("Current name: " + editHero.getName());
                 System.out.println("Please enter the new name below");
                 String newName = scanner.nextLine();
@@ -209,10 +209,9 @@ public class Userinterface {
         } else {
 
             System.out.println("Choose hero you want to delete: \n");
-            for (Superhero hero :controller.getHeroDatabase()) {
-                System.out.println(controller.getHeroDatabase().indexOf(hero) + 1 + ". " + hero.getName());
+            for (Superhero superhero :controller.getHeroDatabase()) {
+                System.out.println(controller.getHeroDatabase().indexOf(superhero) + 1 + ". " + superhero.getName());
             }
-
 
             int RI = readIntger();
             System.out.println("Are you sure, you want delete this superhero? " + controller.getHeroDatabase().get(RI - 1).getName() + "?\n1. Delete " + controller.getHeroDatabase().get(RI - 1).getName() + "\n2. Dont delete");

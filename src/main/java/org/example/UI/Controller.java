@@ -1,5 +1,6 @@
-package org.example;
-
+package org.example.UI;
+import org.example.Database;
+import org.example.Superhero;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,9 +16,10 @@ public class Controller {
 
     public void addSupheroes(String name, boolean b, String power, int year, double strength) {
     }
-    public Collection<Object> getHeroDatabase() {
+    public ArrayList<Superhero> getHeroDatabase() {
         return getHeroDatabase();
     }
+
     public Superhero findSuperhero(String findHero) {
         return findSuperhero(findHero);
 
