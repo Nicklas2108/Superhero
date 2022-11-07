@@ -1,7 +1,5 @@
 package Superhero;
 
-import org.example.UI.Persons;
-
 public class Superhero {
     // Attributterne som jeg benytter i dette tilfælde
     private String name;
