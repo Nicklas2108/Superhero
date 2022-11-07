@@ -1,11 +1,9 @@
 package org.example;
-
 import java.util.Scanner;
 
-public class Userinterface {
-    private Controller controller = new Controller();
+public class UserInterface {
+    public Controller controller = new Controller();
     Scanner scanner = new Scanner(System.in);
-
 
     public void startProgram() {
         int userChoice = -1;
@@ -26,12 +24,10 @@ public class Userinterface {
             userChoice = scanner.nextInt();
             scanner.nextLine(); // Håndtering af Scanner bug
             UserChoice(userChoice);
-
         }
     }
 
     // Brugerens valgmuligheder
-
     public void UserChoice(int userChoice) {
         if (userChoice == 1)
             addSuperhero();
@@ -43,6 +39,9 @@ public class Userinterface {
             editSuperhero();
         else if (userChoice == 5)
             deleteHero();
+        else if (userChoice == 6)
+        controller.saveToFile(); {
+        }
     }
 
     // Tilføjer superhelte nedenfor
@@ -61,7 +60,7 @@ public class Userinterface {
         System.out.println("Enter the superhero's strength:");
         // double strength = scanner.nextDouble();
         double strength = readDouble();
-        controller.addSupheroes(name, true, power, year, strength);
+        controller.addSuperheroes(name, true, power, year, strength);
     }
 
     // Forekommer en list af suoerhelte
@@ -132,8 +131,6 @@ public class Userinterface {
             for (int i = 0; i < controller.getHeroDatabase().size(); i++) {
                 System.out.println(i + 1 + " Superhero.Superhero: \n" + controller.getHeroDatabase().get(i));
             }
-
-
             System.out.println("Enter which superhero you want to change");
             int numb = scanner.nextInt();
             Superhero editHero;
@@ -177,7 +174,6 @@ public class Userinterface {
             }
         }
     }
-
     // Tilføjer noget briger venlighed, som sørger for der ikke forekommer errors.
 
     public int readIntger() {
@@ -189,7 +185,6 @@ public class Userinterface {
         return result;
     }
 
-
     public int readDouble() {
         while (!scanner.hasNextDouble()) {
             String text = scanner.next();
@@ -199,20 +194,16 @@ public class Userinterface {
         return result;
     }
 
-
     // Tilføjere en deltehero, som kan fjeren superheroes igen.
-
     private void deleteHero() {
 
         if (controller.getHeroDatabase().isEmpty()) {
             System.out.println("No heroes found in our database");
         } else {
-
             System.out.println("Choose hero you want to delete: \n");
-            for (Superhero hero :controller.getHeroDatabase()) {
+            for (Superhero hero : controller.getHeroDatabase()) {
                 System.out.println(controller.getHeroDatabase().indexOf(hero) + 1 + ". " + hero.getName());
             }
-
 
             int RI = readIntger();
             System.out.println("Are you sure, you want delete this superhero? " + controller.getHeroDatabase().get(RI - 1).getName() + "?\n1. Delete " + controller.getHeroDatabase().get(RI - 1).getName() + "\n2. Dont delete");
@@ -227,8 +218,6 @@ public class Userinterface {
                 default:
                     System.out.println("Input is not valid");
                     break;
-
-
             }
         }
     }

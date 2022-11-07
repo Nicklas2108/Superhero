@@ -57,11 +57,9 @@ public class Superhero {
         return strength;
     }
 
-
     // ToString printer information ud om en superhelt
     public String toString() {
         return "Real name: " + name + "\nSuperpower: " + superPower + "\nYear of publication: " + creationYear + "\nStrength: " + strength + "\n";
-
     }
 }
 
