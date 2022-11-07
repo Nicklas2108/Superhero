@@ -1,4 +1,6 @@
-package org.example;
+package Superhero;
+
+import org.example.UI.Persons;
 
 public class Superhero {
     // Attributterne som jeg benytter i dette tilfælde
@@ -62,7 +64,9 @@ public class Superhero {
         return "Real name: " + name + "\nSuperpower: " + superPower + "\nYear of publication: " + creationYear + "\nStrength: " + strength + "\n";
 
     }
+
 }
+
 
 
 

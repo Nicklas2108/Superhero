@@ -1,15 +1,14 @@
 package org.example.UI;
 import org.example.Database;
-import org.example.FileHandler;
-import org.example.Superhero;
-
+import Filehandler.FileHandler;
+import Superhero.Superhero;
 import java.util.ArrayList;
 
 public class Controller {
     public Database database = new Database();
     private FileHandler fileHandler = new FileHandler();
 
-    public ArrayList <Superhero> getSuperheroes() {
+    public ArrayList<Superhero> getSuperheroes() {
         return database.getSuperheroes();
     }
 
@@ -19,14 +18,17 @@ public class Controller {
     public ArrayList<Superhero> getHeroDatabase() {
         return getHeroDatabase();
     }
+
     public Superhero findSuperhero(String findHero) {
         return findSuperhero(findHero);
     }
+
     public void deleteHero(int ri) {
         deleteHero(ri);
     }
 
     public void saveData() {
         fileHandler.saveData(database.superheroArray());
+
     }
 }

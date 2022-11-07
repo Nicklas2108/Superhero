@@ -1,5 +1,7 @@
 package org.example;
 
+import Superhero.Superhero;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class Database {
         Superhero s1 = new Superhero("Stark", "Intelligent", false, 1925);
         Superhero s2 = new Superhero("Hulk", "Ultra Strength", true, 1950);
         Superhero s3 = new Superhero("Batman", "High Teknologi And Rich", false, 2005);
-        Superhero s4 = new Superhero("Spiderman", "Fast and Smart", true, 2006);
+        Superhero s4 = new Superhero("Spiderman", "Fast and Smarth", true, 2006);
         //Laver en arrayliste som printer superheroes ud
 
         heroDatabase = new ArrayList<Superhero>(List.of(s1, s2, s3, s4));
@@ -41,6 +43,8 @@ public class Database {
         return soegerresultat;
     }
 
+
+
     public ArrayList<Superhero> getHeroDatabase() {
         return heroDatabase;
     }
@@ -53,7 +57,6 @@ public class Database {
         return getSuperheroes();
     }
 
-
     public void editSuperhero(String name, boolean isHuman, String superPower, int creationYear, double strength) {
         Superhero editSuperhero = new Superhero(name, isHuman, superPower, creationYear, strength);
 
@@ -62,6 +65,7 @@ public class Database {
     public ArrayList<Superhero> editSuperhero () {
         return heroDatabase;
     }
+
 
     public void deleteHero(int heroToDelete) {
 
@@ -79,6 +83,8 @@ public class Database {
         }
         return heroBuilder.toString();
     }
+
+
 }
 
 

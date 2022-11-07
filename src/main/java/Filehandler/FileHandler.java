@@ -1,4 +1,4 @@
-package org.example;
+package Filehandler;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,4 +22,6 @@ public class FileHandler {
     public void saveData(String s) {
         printStream.println(s);
     }
+
+
 }

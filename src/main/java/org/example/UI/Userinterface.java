@@ -1,12 +1,10 @@
 package org.example.UI;
-import org.example.Superhero;
-
+import Superhero.Superhero;
 import java.util.Scanner;
 
 public class Userinterface {
     private Controller controller = new Controller();
     Scanner scanner = new Scanner(System.in);
-
 
     public void startProgram() {
         int userChoice = -1;
@@ -31,7 +29,6 @@ public class Userinterface {
     }
 
     // Brugerens valgmuligheder
-
     public void UserChoice(int userChoice) {
         if (userChoice == 1)
             addSuperhero();
@@ -43,6 +40,8 @@ public class Userinterface {
             editSuperhero();
         else if (userChoice == 5)
             deleteHero();
+        else if (userChoice == 9)
+            controller.saveData();
     }
 
     // Tilføjer superhelte nedenfor
