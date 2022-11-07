@@ -13,7 +13,7 @@ public class Controller {
         return database.getSuperheroes();
     }
 
-    public void addSupheroes(String name, boolean b, String power, int year, double strength) {
+    public void addSuperheroes(String name, boolean b, String power, int year, double strength) {
     }
 
     public ArrayList<Superhero> getHeroDatabase() {
@@ -27,6 +27,6 @@ public class Controller {
     }
 
     public void saveData() {
-        fileHandler.saveData(database.superheroArray());
+        fileHandler.saveToFile(getHeroDatabase());
     }
 }
