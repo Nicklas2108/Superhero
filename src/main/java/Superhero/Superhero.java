@@ -1,6 +1,6 @@
 package Superhero;
-
-public class Superhero {
+import org.example.UI.Controller;
+    public class Superhero  {
     // Attributterne som jeg benytter i dette tilfælde
     private String name;
     private boolean isHuman;
@@ -61,6 +61,7 @@ public class Superhero {
     public String toString() {
         return "Real name: " + name + "\nSuperpower: " + superPower + "\nYear of publication: " + creationYear + "\nStrength: " + strength + "\n";
     }
+
 
 }
 

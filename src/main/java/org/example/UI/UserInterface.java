@@ -2,7 +2,7 @@ package org.example.UI;
 import Superhero.Superhero;
 import java.util.Scanner;
 
-public class Userinterface {
+public class UserInterface {
     private Controller controller = new Controller();
     Scanner scanner = new Scanner(System.in);
 
@@ -41,7 +41,7 @@ public class Userinterface {
         else if (userChoice == 5)
             deleteHero();
         else if (userChoice == 9)
-            controller.saveData();
+            controller.saveToFile();
     }
 
     // Tilføjer superhelte nedenfor
@@ -60,7 +60,7 @@ public class Userinterface {
         System.out.println("Enter the superhero's strength:");
         // double strength = scanner.nextDouble();
         double strength = readDouble();
-        controller.addSupheroes(name, true, power, year, strength);
+       this.controller.addSuperheroes(name, true, power, year, strength);
     }
 
     // Forekommer en list af suoerhelte

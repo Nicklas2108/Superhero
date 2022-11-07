@@ -18,7 +18,7 @@ public class Controller {
     }
 
     public ArrayList<Superhero> getHeroDatabase() {
-        return getHeroDatabase();
+        return database.getHeroDatabase();
     }
 
     public Superhero findSuperhero(String findHero) {
