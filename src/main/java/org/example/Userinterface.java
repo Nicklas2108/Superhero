@@ -1,4 +1,10 @@
+<<<<<<<< HEAD:src/main/java/org/example/UserInterface.java
 package org.example;
+========
+package org.example.UI;
+import org.example.Superhero;
+
+>>>>>>>> origin/main:src/main/java/org/example/UI/Userinterface.java
 import java.util.Scanner;
 
 public class UserInterface {
@@ -13,11 +19,11 @@ public class UserInterface {
 
         while (userChoice != 9) {
             System.out.println("""                  
-                    1. Add Superhero.Superhero
-                    2. Superhero.Superhero List
-                    3. Search Superhero.Superhero
-                    4. Edit Superhero.Superhero
-                    5. Delete hero
+                    1. Add Superhero
+                    2. Superhero List
+                    3. Search Superhero
+                    4. Edit Superhero
+                    5. Delete Hero
                     9. End Program
                     """);
 
@@ -110,7 +116,6 @@ public class UserInterface {
             scanner.nextLine();
             editSuperhero(editUserChoice);
         }
-
     }
 
     private void editSuperhero(int editUserChoice) {
@@ -143,7 +148,6 @@ public class UserInterface {
                 System.out.println("Edit superhero" + editHero.getName() + " " + editHero.getSuperPower() + " " + editHero.getCreationYear() + " " + editHero.getStrength());
 
                 System.out.println("Edit superhero and press enter" + " " + "If no need for editing press enter");
-
 
                 System.out.println("Current name: " + editHero.getName());
                 System.out.println("Please enter the new name below");
@@ -201,8 +205,13 @@ public class UserInterface {
             System.out.println("No heroes found in our database");
         } else {
             System.out.println("Choose hero you want to delete: \n");
+<<<<<<<< HEAD:src/main/java/org/example/UserInterface.java
             for (Superhero hero : controller.getHeroDatabase()) {
                 System.out.println(controller.getHeroDatabase().indexOf(hero) + 1 + ". " + hero.getName());
+========
+            for (Superhero superhero :controller.getHeroDatabase()) {
+                System.out.println(controller.getHeroDatabase().indexOf(superhero) + 1 + ". " + superhero.getName());
+>>>>>>>> origin/main:src/main/java/org/example/UI/Userinterface.java
             }
 
             int RI = readIntger();
