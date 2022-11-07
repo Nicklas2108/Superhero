@@ -48,7 +48,12 @@ public class Database {
     }
 
     public void addToDatabase(String name, boolean isHuman, String superPower, int creationYear, double strength) {
+
         heroDatabase.add(new Superhero(name, isHuman, superPower, creationYear, strength));
+
+
+
+
     }
 
     public ArrayList<Superhero> getSuperheroes() {

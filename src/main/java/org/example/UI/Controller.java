@@ -3,7 +3,6 @@ package org.example.UI;
 import Filehandler.FileHandler;
 import Superhero.Superhero;
 import org.example.Database;
-
 import java.util.ArrayList;
 
 public class Controller {
@@ -15,6 +14,7 @@ public class Controller {
     }
 
     public void addSuperheroes(String name, boolean b, String power, int year, double strength) {
+        database.getHeroDatabase().add(new Superhero(name, b, power, year, strength));
     }
 
     public ArrayList<Superhero> getHeroDatabase() {
@@ -31,5 +31,6 @@ public class Controller {
 
     public void saveToFile() {
         fileHandler.saveToFile(getHeroDatabase());
+        System.out.println("We´re in controller");
     }
 }
