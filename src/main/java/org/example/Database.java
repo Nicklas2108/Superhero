@@ -83,6 +83,10 @@ public class Database {
         }
         return heroBuilder.toString();
     }
+
+    public void loadallheroes(ArrayList<Superhero> superheroes) {
+        heroDatabase = superheroes;
+    }
 }
 
 

@@ -32,4 +32,9 @@ public class Controller {
         fileHandler.saveToFile(getHeroDatabase());
 
     }
+    public void readfromfile(){
+        ArrayList<Superhero> superheroes = fileHandler.readFromFile();
+        database.loadallheroes(superheroes);
+    }
+
 }
