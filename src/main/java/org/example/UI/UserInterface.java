@@ -1,7 +1,10 @@
 package org.example.UI;
 
+import Comparator.*;
 import Superhero.Superhero;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -56,7 +59,7 @@ public class UserInterface {
         String power = scanner.nextLine();
 
         System.out.println("Enter the superhero's year of publication: ");
-        int year = readIntger();
+        int year = readInteger();
 
         System.out.println("Enter the superhero's strength:");
         double strength = readDouble();
@@ -66,8 +69,10 @@ public class UserInterface {
     // Forekommer en list af superhelte
     public void superheroList() {
 
-        if (controller.getHeroDatabase().size() == 0) {
-            System.out.println("There's no Superheroesregistered...\n");
+        ArrayList<Superhero> superheroList = controller.getHeroDatabase();
+        Collections.sort(superheroList, new ComparatorName().thenComparing(new ComparatorSuperPower().thenComparing(new ComparatorCreationYear().thenComparing(new ComparatorStrength()))));
+        if (superheroList.size() == 0) {
+            System.out.println("There's no Superheroes registered...\n");
         } else {
             System.out.println("List of Superheroes registered\n");
             for (Superhero superhero : controller.getHeroDatabase()) {
@@ -118,9 +123,10 @@ public class UserInterface {
                     9. Back to main menu
                     """);
 
-            editUserChoice = readIntger();
+            editUserChoice = readInteger();
             scanner.nextLine();
             editSuperhero(editUserChoice);
+            System.exit(0);
         }
     }
 
@@ -189,7 +195,7 @@ public class UserInterface {
 
     // Tilføjer noget briger venlighed, som sørger for der ikke forekommer errors.
 
-    public int readIntger() {
+    public int readInteger() {
         while (!scanner.hasNextInt()) {
             String text = scanner.next();
             System.out.println(text + " " + "Invalid data, input a number please.");
@@ -222,10 +228,10 @@ public class UserInterface {
                 System.out.println(controller.getHeroDatabase().indexOf(superhero) + 1 + ". " + superhero.getName());
             }
 
-            int RI = readIntger();
+            int RI = readInteger();
             System.out.println("Are you sure, you want delete this superhero? " + controller.getHeroDatabase().get(RI - 1).getName() + "?\n1. Delete " + controller.getHeroDatabase().get(RI - 1).getName() + "\n2. Dont delete");
 
-            int v2 = readIntger();
+            int v2 = readInteger();
             switch (v2) {
                 case 1:
                     controller.deleteHero(RI);

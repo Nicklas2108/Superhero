@@ -10,9 +10,9 @@ public class Database {
 
     //Opretter Superheroes
     public Database() {
-        Superhero s1 = new Superhero("Stark", false,"Intelligent",  1925, 75.0);
-        Superhero s2 = new Superhero("Hulk", true, "Ultra Strength", 1950, 100.0);
-        Superhero s3 = new Superhero("Batman", false, "wealth and high technology",  2005, 65.0);
+        Superhero s1 = new Superhero("Iron Man", true,"Intelligent",  1925, 75.0);
+        Superhero s2 = new Superhero("Hulk", false, "Ultra Strength", 1950, 100.0);
+        Superhero s3 = new Superhero("Batman", true, "wealth and high technology",  2005, 65.0);
         Superhero s4 = new Superhero("Spiderman", true, "fast and smart", 2006, 65.0);
         //Laver en arrayliste som printer superheroes ud
 
@@ -73,7 +73,12 @@ public class Database {
         StringBuilder heroBuilder = new StringBuilder();
 
         for (Superhero superhero : heroDatabase) {
-            heroBuilder.append(String.format("'%s;%s;%s;%s;%s\n", superhero.getName(), superhero.getisHuman(), superhero.getSuperPower(), superhero.getCreationYear(), superhero.getStrength()));
+            heroBuilder.append(String.format("'%s;%s;%s;%s;%s\n",
+                    superhero.getName(),
+                    superhero.getisHuman(),
+                    superhero.getSuperPower(),
+                    superhero.getCreationYear(),
+                    superhero.getStrength()));
         }
         return heroBuilder.toString();
     }

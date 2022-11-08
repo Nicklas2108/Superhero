@@ -1,13 +1,19 @@
 package Superhero;
 
 
-public class Superhero {
+public class Superhero implements Comparable<Superhero> {
     // Attributterne som jeg benytter i dette tilfælde
     private String name;
     private boolean isHuman;
     private String superPower;
     private int creationYear;
     private double strength;
+
+    @Override
+    public int compareTo(Superhero o) {
+        return this.name.compareTo(o.name);
+    }
+
 
     //Konstruktør opretter obejtker
     public Superhero(String name, boolean isHuman, String superPower, int creationYear, double strength) {
@@ -54,15 +60,6 @@ public class Superhero {
     public double setStrength() {
         return strength;
     }
-
-    // ToString printer information ud om en superhelt
-    // public String toString() {
-    //  return "Real name: " + name + "\nSuperpower: " + superPower + "\nYear of publication: " + creationYear + "\nStrength: " + strength + "\n";
 }
-//}
-
-
-
-
 
 
