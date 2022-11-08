@@ -1,6 +1,5 @@
 package org.example;
 import Superhero.Superhero;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +10,10 @@ public class Database {
 
     //Opretter Superheroes
     public Database() {
-        Superhero s1 = new Superhero("Stark", "Intelligent", false, 1925);
-        Superhero s2 = new Superhero("Hulk", "Ultra Strength", true, 1950);
-        Superhero s3 = new Superhero("Batman", "High Teknologi And Rich", false, 2005);
-        Superhero s4 = new Superhero("Spiderman", "Fast and Smart", true, 2006);
+        Superhero s1 = new Superhero("Stark", false,"Intelligent",  1925, 75.0);
+        Superhero s2 = new Superhero("Hulk", true, "Ultra Strength", 1950, 100.0);
+        Superhero s3 = new Superhero("Batman", false, "wealth and high technology",  2005, 65.0);
+        Superhero s4 = new Superhero("Spiderman", true, "fast and smart", 2006, 65.0);
         //Laver en arrayliste som printer superheroes ud
 
         heroDatabase = new ArrayList<>(List.of(s1, s2, s3, s4));
@@ -26,19 +25,18 @@ public class Database {
     }
 
     public Superhero findSuperhero(String name) {
-        for (Superhero s : heroDatabase) {
-            if (s.getName().equals(name)) ;
-            {
-                return s;
+        for (Superhero superhero : heroDatabase) {
+
+            if (superhero.getName().equals(name)) {
+                return superhero;
             }
-        }
-        return null;
+        } return null;
     }
 
     public ArrayList<Superhero> findSuperheroes(String name) {
-        for (Superhero s : heroDatabase) {
-            if (s.getName().equals(name))
-                soegeResultat.add(s);
+        for (Superhero superhero : heroDatabase) {
+            if (superhero.getName().equals(name))
+                soegeResultat.add(superhero);
         }
         return soegeResultat;
     }
@@ -50,9 +48,6 @@ public class Database {
     public void addToDatabase(String name, boolean isHuman, String superPower, int creationYear, double strength) {
 
         heroDatabase.add(new Superhero(name, isHuman, superPower, creationYear, strength));
-
-
-
 
     }
 

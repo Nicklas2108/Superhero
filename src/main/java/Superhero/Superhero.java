@@ -1,6 +1,7 @@
 package Superhero;
-import org.example.UI.Controller;
-    public class Superhero  {
+
+
+public class Superhero {
     // Attributterne som jeg benytter i dette tilfælde
     private String name;
     private boolean isHuman;
@@ -16,10 +17,7 @@ import org.example.UI.Controller;
         this.creationYear = creationYear;
         this.strength = strength;
     }
-
-    // get metode
-    public Superhero(String stark, String avengers, boolean b, int strength) {
-    }
+    // get og set metode
 
     public String getName() {
         return name;
@@ -58,12 +56,10 @@ import org.example.UI.Controller;
     }
 
     // ToString printer information ud om en superhelt
-    public String toString() {
-        return "Real name: " + name + "\nSuperpower: " + superPower + "\nYear of publication: " + creationYear + "\nStrength: " + strength + "\n";
-    }
-
-
+    // public String toString() {
+    //  return "Real name: " + name + "\nSuperpower: " + superPower + "\nYear of publication: " + creationYear + "\nStrength: " + strength + "\n";
 }
+//}
 
 
 

@@ -9,21 +9,14 @@ public class FileHandler {
 
     public void saveToFile(ArrayList<Superhero> superheroes) {
         try {
-            PrintStream printStream = new PrintStream(new FileOutputStream(file, true)); // True til filen
+            PrintStream printStream = new PrintStream(new FileOutputStream(file, true));
             for (Superhero superhero : superheroes) {
                 printStream.println(superhero.getName() + ',' +
                         superhero.getisHuman() + ',' +
                         superhero.getSuperPower() + ',' +
                         superhero.getCreationYear() + ',' +
                         superhero.getStrength());
-
-
-
             }
-
-
-
-
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

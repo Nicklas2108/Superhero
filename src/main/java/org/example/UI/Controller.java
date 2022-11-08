@@ -1,5 +1,4 @@
 package org.example.UI;
-
 import Filehandler.FileHandler;
 import Superhero.Superhero;
 import org.example.Database;
