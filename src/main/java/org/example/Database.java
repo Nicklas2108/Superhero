@@ -12,11 +12,12 @@ public class Database {
     public Database() {
         Superhero s1 = new Superhero("Iron Man", true,"Intelligent",  1925, 75.0);
         Superhero s2 = new Superhero("Hulk", false, "Ultra Strength", 1950, 100.0);
-        Superhero s3 = new Superhero("Batman", true, "wealth and high technology",  2005, 65.0);
-        Superhero s4 = new Superhero("Spiderman", true, "fast and smart", 2006, 65.0);
+        Superhero s3 = new Superhero("Batman", true, "Wealth And High technology",  2005, 65.0);
+        Superhero s4 = new Superhero("Spiderman", true, "Fast And Smart", 2006, 65.0);
+        Superhero s5 = new Superhero("Spiderman", true, "Arrogant", 2006, 65.0);
         //Laver en arrayliste som printer superheroes ud
 
-        heroDatabase = new ArrayList<>(List.of(s1, s2, s3, s4));
+        heroDatabase = new ArrayList<>(List.of(s1, s2, s3, s4,s5));
         soegeResultat = new ArrayList<>();
     }
 

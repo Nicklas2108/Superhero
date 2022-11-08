@@ -46,6 +46,7 @@ public class UserInterface {
         else if (userChoice == 5)
             deleteHero();
         else if (userChoice == 9)
+            // else if (userChoice == 6)  Sortering
             controller.saveToFile();
     }
 
@@ -194,7 +195,6 @@ public class UserInterface {
     }
 
     // Tilføjer noget briger venlighed, som sørger for der ikke forekommer errors.
-
     public int readInteger() {
         while (!scanner.hasNextInt()) {
             String text = scanner.next();
@@ -203,7 +203,6 @@ public class UserInterface {
         int result = scanner.nextInt();
         return result;
     }
-
 
     public int readDouble() {
         while (!scanner.hasNextDouble()) {

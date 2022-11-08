@@ -30,6 +30,6 @@ public class Controller {
 
     public void saveToFile() {
         fileHandler.saveToFile(getHeroDatabase());
-        System.out.println("We´re in controller");
+
     }
 }

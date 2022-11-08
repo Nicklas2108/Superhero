@@ -13,13 +13,10 @@ public class Herotest {
 
         //arrange test
         String Superhero = s.getSuperPower();
-
         //act
-
         s.getSuperPower();
 
         //Asseert
-
         assertEquals(s.getSuperPower());
     }
     private void assertEquals(String superPower) {
