@@ -1,6 +1,10 @@
 package org.example;
+
+import Comparator.*;
 import Superhero.Superhero;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Database {
@@ -10,15 +14,8 @@ public class Database {
 
     //Opretter Superheroes
     public Database() {
-        Superhero s1 = new Superhero("Iron Man", true,"Intelligent",  1925, 75.0);
-        Superhero s2 = new Superhero("Hulk", false, "Ultra Strength", 1950, 100.0);
-        Superhero s3 = new Superhero("Batman", true, "Wealth And High technology",  2005, 65.0);
-        Superhero s4 = new Superhero("Spiderman", true, "Fast And Smart", 2006, 65.0);
-        Superhero s5 = new Superhero("Spiderman", true, "Arrogant", 2006, 65.0);
-        //Laver en arrayliste som printer superheroes ud
-
-        heroDatabase = new ArrayList<>(List.of(s1, s2, s3, s4,s5));
-        soegeResultat = new ArrayList<>();
+        soegeResultat = new ArrayList<Superhero>();
+        heroDatabase = new ArrayList<Superhero>();
     }
 
     public void addSuperheroes(String name, boolean isHuman, String superPower, int creationYear, double strength) {
@@ -31,7 +28,8 @@ public class Database {
             if (superhero.getName().equals(name)) {
                 return superhero;
             }
-        } return null;
+        }
+        return null;
     }
 
     public ArrayList<Superhero> findSuperheroes(String name) {
@@ -52,9 +50,6 @@ public class Database {
 
     }
 
-    public ArrayList<Superhero> getSuperheroes() {
-        return getSuperheroes();
-    }
 
     public void editSuperhero(String name, boolean isHuman, String superPower, int creationYear, double strength) {
         Superhero editSuperhero = new Superhero(name, isHuman, superPower, creationYear, strength);
@@ -70,6 +65,7 @@ public class Database {
         System.out.println(heroDatabase.get(deleteOnIndex).getName() + " has been deleted");
         heroDatabase.remove(deleteOnIndex);
     }
+
     public String superheroArray() {
         StringBuilder heroBuilder = new StringBuilder();
 
@@ -87,6 +83,28 @@ public class Database {
     public void loadallheroes(ArrayList<Superhero> superheroes) {
         heroDatabase = superheroes;
     }
+
+    public void setHeroDatabase(ArrayList<Superhero> superheroes) {
+        heroDatabase = superheroes;
+
+    }
+    public void sortName() {
+        Collections.sort(heroDatabase, new ComparatorName());
+    }
+    public void sortHuman() {
+        Collections.sort(heroDatabase, new ComparatorIsHuman());
+    }
+    public void sortSuperPower() {
+        Collections.sort(heroDatabase, new ComparatorSuperPower());
+    }
+    public void sortCreationYear() {
+        Collections.sort(heroDatabase, new ComparatorCreationYear());
+    }
+    public void sortStrengh() {
+        Collections.sort(heroDatabase, new ComparatorStrength());
+    }
+
+
 }
 
 

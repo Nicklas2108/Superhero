@@ -1,8 +1,6 @@
 package org.example.UI;
-
 import Comparator.*;
 import Superhero.Superhero;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -13,6 +11,7 @@ public class UserInterface {
 
     public void startProgram() {
         int userChoice = -1;
+        controller.loadFile();
 
         System.out.println("Welcome to Superhero! \n" +
                 "_______________");
@@ -24,13 +23,17 @@ public class UserInterface {
                     3. Search Superhero
                     4. Edit Superhero
                     5. Delete Hero
+                    6. Sort after attribute
                     9. End Program
                     """);
 
             userChoice = scanner.nextInt();
             scanner.nextLine(); // Håndtering af Scanner bug
             UserChoice(userChoice);
+
+
         }
+
     }
 
     // Brugerens valgmuligheder
@@ -45,8 +48,10 @@ public class UserInterface {
             editSuperhero();
         else if (userChoice == 5)
             deleteHero();
+        else if (userChoice == 6)
+            caseSortSuperheroes();
         else if (userChoice == 9)
-            // else if (userChoice == 6)  Sortering
+
             controller.saveToFile();
     }
 
@@ -64,14 +69,14 @@ public class UserInterface {
 
         System.out.println("Enter the superhero's strength:");
         double strength = readDouble();
-        this.controller.addSuperheroes(name, true, power, year, strength);
+        controller.addSuperheroes(name, true, power, year, strength);
     }
 
     // Forekommer en list af superhelte
     public void superheroList() {
 
         ArrayList<Superhero> superheroList = controller.getHeroDatabase();
-        Collections.sort(superheroList, new ComparatorName().thenComparing(new ComparatorSuperPower().thenComparing(new ComparatorCreationYear().thenComparing(new ComparatorStrength()))));
+        //Collections.sort(superheroList, new ComparatorName().thenComparing(new ComparatorSuperPower().thenComparing(new ComparatorCreationYear().thenComparing(new ComparatorStrength()))));
         if (superheroList.size() == 0) {
             System.out.println("There's no Superheroes registered...\n");
         } else {
@@ -243,4 +248,44 @@ public class UserInterface {
             }
         }
     }
+
+    public void caseSortSuperheroes() {
+        System.out.println("Sort by Year,IsHuman,Name, Stength, Power");
+        System.out.println("""
+                                
+                1. Name
+                2. Ishuman
+                3. Superpower
+                4. Strength
+                5. CreationYear
+                """
+
+        );
+        int sortChoise = readInteger();
+
+        switch (sortChoise) {
+            case 1:
+                controller.sortName();
+                superheroList();
+                break;
+            case 2:
+                controller.sortHuman();
+                superheroList();
+                break;
+            case 3:
+                controller.sortSuperPower();
+                superheroList();
+                break;
+            case 4:
+                controller.sortStrengh();
+                superheroList();
+                break;
+            case 5:
+                controller.sortCreationYear();
+                superheroList();
+                break;
+        }
+    }
+
+
 }

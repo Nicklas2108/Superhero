@@ -1,5 +1,6 @@
-Iron Man,true,Intelligent,1925,75.0
-Hulk,false,Ultra Strength,1950,100.0
-Batman,true,Wealth And High technology,2005,65.0
-Spiderman,true,Fast And Smart,2006,65.0
-Spiderman,true,Arrogant,2006,65.0
+Batman;true;Wealth And High technology;2005;65.0
+Hulk;false;Ultra Strength;1950;100.0
+Iron Man;true;Intelligent;1925;75.0
+Spiderman;true;Arrogant;2006;65.0
+Spiderman;true;Fast And Smart;2006;65.0
+hulk;true;hulk;200;200.0
