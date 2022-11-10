@@ -1,8 +1,7 @@
 package org.example.UI;
-import Comparator.*;
 import Superhero.Superhero;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -288,4 +287,58 @@ public class UserInterface {
     }
 
 
+// TO DO fix
+    public void SortByPrimary {
+        ArrayList<Superhero> superheroes = new ArrayList<>();
+
+        superheroes.add(new Superhero("Batman;true;Wealth And High technology;2005;65.0"));
+        superheroes.add(new Superhero("Hulk;false;Ultra Strength;1950;100.0"));
+        superheroes.add(new Superhero("Iron Man;true;Intelligent;1925;75.0"));
+        superheroes.add(new Superhero("Spiderman;true;Fast And Smart;2006;65.0"));
+
+        Scanner scanner = new Scanner(System.in);
+
+        Comparator<Superhero> comparator = null;
+        Comparator<Superhero> comparatorS = null;
+
+        while (true) {
+            System.out.println("""
+                    1. Sort by Name
+                    2. Sort by IsHuman
+                    3. Sort by Superpower
+                    4. Sort by Strength
+                    5. Sort by CreationYear
+                    6. Print""");
+
+            String type = null;
+
+            switch (scanner.nextInt()) {
+                case 1:
+                    type = "Name";
+                    comparatorSort(type);
+                    break;
+                case 2:
+                    type = "IsHuman";
+                    comparatorSort(type);
+                    break;
+                case 3:
+                    type = "SuperPower";
+                    comparatorSort(type);
+                    break;
+                case 4:
+                    type = "CreationYear";
+                    comparatorSort(type);
+                    break;
+                case 5:
+                    type = "IsHuman";
+                    comparatorSort(type);
+                    break;
+                case 6:
+                    for (Superhero superhero : superheroes) {
+                        System.out.println(superheroes);
+                    }
+            }
+        }
+    }
 }
+

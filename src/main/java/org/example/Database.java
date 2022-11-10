@@ -5,12 +5,13 @@ import Superhero.Superhero;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.Comparator;
 
 public class Database {
 
     private ArrayList<Superhero> heroDatabase;
     private ArrayList<Superhero> soegeResultat;
+    private String type;
 
     //Opretter Superheroes
     public Database() {
@@ -50,7 +51,6 @@ public class Database {
 
     }
 
-
     public void editSuperhero(String name, boolean isHuman, String superPower, int creationYear, double strength) {
         Superhero editSuperhero = new Superhero(name, isHuman, superPower, creationYear, strength);
     }
@@ -88,22 +88,54 @@ public class Database {
         heroDatabase = superheroes;
 
     }
+
     public void sortName() {
         Collections.sort(heroDatabase, new ComparatorName());
     }
+
     public void sortHuman() {
         Collections.sort(heroDatabase, new ComparatorIsHuman());
     }
+
     public void sortSuperPower() {
         Collections.sort(heroDatabase, new ComparatorSuperPower());
     }
+
     public void sortCreationYear() {
         Collections.sort(heroDatabase, new ComparatorCreationYear());
     }
+
     public void sortStrengh() {
         Collections.sort(heroDatabase, new ComparatorStrength());
     }
 
+
+
+    public void comparatorSort(String type) {
+
+        Comparator<Superhero> comparator = comparatorSelection(type);
+
+        Collections.sort(heroDatabase, comparator);
+    }
+    public void comparatorSort(String type, String sType) {
+
+        Comparator<Superhero> comparator = comparatorSelection(type);
+        Comparator<Superhero> comparatorS = comparatorSelection(sType);
+
+        Collections.sort(heroDatabase, comparator.thenComparing(comparatorS));
+    }
+    public Comparator<Superhero> comparatorSelection(String type) {
+        return switch (type) {
+            case "CreationYear" -> new ComparatorCreationYear();
+            case "Ishuman" -> new ComparatorIsHuman();
+            case "Superpower" -> new ComparatorSuperPower();
+            case "Strength" -> new ComparatorStrength();
+            case "Name" -> new ComparatorName();
+            default -> null;
+        };
+
+
+    }
 
 }
 

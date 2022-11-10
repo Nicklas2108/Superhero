@@ -9,6 +9,7 @@ public class Superhero implements Comparable<Superhero> {
     private int creationYear;
     private double strength;
 
+
     @Override
     public int compareTo(Superhero o) {
         return this.name.compareTo(o.name);
