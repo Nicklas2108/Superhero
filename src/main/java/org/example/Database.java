@@ -80,7 +80,7 @@ public class Database {
         return heroBuilder.toString();
     }
 
-    public void loadallheroes(ArrayList<Superhero> superheroes) {
+    public void loadAllHeroes(ArrayList<Superhero> superheroes) {
         heroDatabase = superheroes;
     }
 
@@ -108,36 +108,8 @@ public class Database {
     public void sortStrengh() {
         Collections.sort(heroDatabase, new ComparatorStrength());
     }
-
-
-
-    public void comparatorSort(String type) {
-
-        Comparator<Superhero> comparator = comparatorSelection(type);
-
-        Collections.sort(heroDatabase, comparator);
-    }
-    public void comparatorSort(String type, String sType) {
-
-        Comparator<Superhero> comparator = comparatorSelection(type);
-        Comparator<Superhero> comparatorS = comparatorSelection(sType);
-
-        Collections.sort(heroDatabase, comparator.thenComparing(comparatorS));
-    }
-    public Comparator<Superhero> comparatorSelection(String type) {
-        return switch (type) {
-            case "CreationYear" -> new ComparatorCreationYear();
-            case "Ishuman" -> new ComparatorIsHuman();
-            case "Superpower" -> new ComparatorSuperPower();
-            case "Strength" -> new ComparatorStrength();
-            case "Name" -> new ComparatorName();
-            default -> null;
-        };
-
-
-    }
-
 }
+
 
 
 

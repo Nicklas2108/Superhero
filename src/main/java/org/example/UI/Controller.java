@@ -7,6 +7,7 @@ import org.example.Database;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class Controller {
     public Database database = new Database();
@@ -26,7 +27,7 @@ public class Controller {
     }
 
     public Superhero findSuperhero(String findHero) {
-        if (isChanged){
+        if (isChanged) {
             return database.findSuperhero(findHero);
 
         }
@@ -35,13 +36,12 @@ public class Controller {
 
     public void deleteHero(int ri) {
         if (isChanged)
-           database.deleteHero(ri);
+            database.deleteHero(ri);
     }
 
     public void saveToFile() {
         if (isChanged)
             fileHandler.saveToFile(getHeroDatabase());
-
 
     }
 
@@ -50,6 +50,7 @@ public class Controller {
         database.setHeroDatabase(superheroes);
 
     }
+
     public void sortName() {
         database.sortName();
     }
@@ -69,4 +70,35 @@ public class Controller {
     public void sortStrengh() {
         database.sortStrengh();
     }
+
+    public void comparatorSort(String type) {
+
+        Comparator<Superhero> comparator = comparatorSelection(type);
+
+        Collections.sort(database.getHeroDatabase(), comparator);
+    }
+
+    public void comparatorSort(String type, String sType) {
+
+        Comparator<Superhero> comparator = comparatorSelection(type);
+        Comparator<Superhero> comparatorS = comparatorSelection(sType);
+
+        Collections.sort(database.getHeroDatabase(), comparator.thenComparing(comparatorS));
+    }
+
+    public Comparator<Superhero> comparatorSelection(String type) {
+        return switch (type) {
+            case "CreationYear" -> new ComparatorCreationYear();
+            case "Ishuman" -> new ComparatorIsHuman();
+            case "Superpower" -> new ComparatorSuperPower();
+            case "Strength" -> new ComparatorStrength();
+            case "Name" -> new ComparatorName();
+            default -> null;
+        };
+    }
+
+    public void fileSaver () {
+        fileHandler.saveToFile(database.getHeroDatabase());
+    }
 }
+

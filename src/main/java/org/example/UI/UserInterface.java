@@ -32,7 +32,6 @@ public class UserInterface {
 
 
         }
-
     }
 
     // Brugerens valgmuligheder
@@ -50,8 +49,7 @@ public class UserInterface {
         else if (userChoice == 6)
             caseSortSuperheroes();
         else if (userChoice == 9)
-
-            controller.saveToFile();
+            System.exit(0);
     }
 
     // Tilføjer superhelte nedenfor
@@ -59,6 +57,9 @@ public class UserInterface {
     public void addSuperhero() {
         System.out.println("Enter the superhero's real name:");
         String name = scanner.nextLine();
+
+        System.out.println("Are they a human? (true/false)");
+        boolean isHuman = scanner.nextBoolean();
 
         System.out.println("Enter the superhero's power: ");
         String power = scanner.nextLine();
@@ -68,7 +69,7 @@ public class UserInterface {
 
         System.out.println("Enter the superhero's strength:");
         double strength = readDouble();
-        controller.addSuperheroes(name, true, power, year, strength);
+        controller.addSuperheroes(name, isHuman, power, year, strength);
     }
 
     // Forekommer en list af superhelte
@@ -95,7 +96,7 @@ public class UserInterface {
     // søgning af superhelte.
 
     public void searchInput() {
-        System.out.println("Enter Superhero.Superhero name: ");
+        System.out.println("Enter Superhero name: ");
         String findHero = scanner.nextLine();
         Superhero superhero = controller.findSuperhero(findHero);
         if (superhero != null) {
@@ -146,12 +147,12 @@ public class UserInterface {
     public void editTool() {
 
         if (controller.getHeroDatabase().size() == 0) {
-            System.out.println("There's no Superhero.Superhero registered");
+            System.out.println("There's no Superhero registered");
         } else {
-            System.out.println("List of Superhero.Superhero's registered");
+            System.out.println("List of Superheroes registered");
 
             for (int i = 0; i < controller.getHeroDatabase().size(); i++) {
-                System.out.println(i + 1 + " Superhero.Superhero: \n" + controller.getHeroDatabase().get(i));
+                System.out.println(i + 1 + " Superhero: \n" + controller.getHeroDatabase().get(i));
             }
 
 
@@ -287,58 +288,60 @@ public class UserInterface {
     }
 
 
-// TO DO fix
-    public void SortByPrimary {
-        ArrayList<Superhero> superheroes = new ArrayList<>();
+    // TO DO fix
+    public void SortByPrimarySecondary() {
 
-        superheroes.add(new Superhero("Batman;true;Wealth And High technology;2005;65.0"));
-        superheroes.add(new Superhero("Hulk;false;Ultra Strength;1950;100.0"));
-        superheroes.add(new Superhero("Iron Man;true;Intelligent;1925;75.0"));
-        superheroes.add(new Superhero("Spiderman;true;Fast And Smart;2006;65.0"));
+        {
+            ArrayList<Superhero> superheroes = new ArrayList<>();
 
-        Scanner scanner = new Scanner(System.in);
+            superheroes.add(new Superhero("Batman", true, "Wealth And High technology", 2005, 65.0));
+            superheroes.add(new Superhero("Hulk", false, "Ultra Strength", 1950, 100.0));
+            superheroes.add(new Superhero("Iron Man", true, "Intelligent", 1925, 75.0));
+            superheroes.add(new Superhero("Spiderman", true, "Fast And Smart", 2006, 65.0));
 
-        Comparator<Superhero> comparator = null;
-        Comparator<Superhero> comparatorS = null;
+            Scanner scanner = new Scanner(System.in);
 
-        while (true) {
-            System.out.println("""
-                    1. Sort by Name
-                    2. Sort by IsHuman
-                    3. Sort by Superpower
-                    4. Sort by Strength
-                    5. Sort by CreationYear
-                    6. Print""");
+            Comparator<Superhero> comparator = null;
+            Comparator<Superhero> comparator2 = null;
 
-            String type = null;
+            while (true) {
+                System.out.println("""
+                        1. Sort by Name
+                        2. Sort by IsHuman
+                        3. Sort by Superpower
+                        4. Sort by Strength
+                        5. Sort by CreationYear
+                        6. Print""");
 
-            switch (scanner.nextInt()) {
-                case 1:
-                    type = "Name";
-                    comparatorSort(type);
-                    break;
-                case 2:
-                    type = "IsHuman";
-                    comparatorSort(type);
-                    break;
-                case 3:
-                    type = "SuperPower";
-                    comparatorSort(type);
-                    break;
-                case 4:
-                    type = "CreationYear";
-                    comparatorSort(type);
-                    break;
-                case 5:
-                    type = "IsHuman";
-                    comparatorSort(type);
-                    break;
-                case 6:
-                    for (Superhero superhero : superheroes) {
-                        System.out.println(superheroes);
-                    }
+                String type = null;
+
+                switch (scanner.nextInt()) {
+                    case 1:
+                        type = "Name";
+                        controller.comparatorSort(type);
+                        break;
+                    case 2:
+                        type = "IsHuman";
+                        controller.comparatorSort(type);
+                        break;
+                    case 3:
+                        type = "SuperPower";
+                        controller.comparatorSort(type);
+                        break;
+                    case 4:
+                        type = "CreationYear";
+                        controller.comparatorSort(type);
+                        break;
+                    case 5:
+                        type = "strength";
+                        controller.comparatorSort(type);
+                        break;
+                    case 6:
+                        for (Superhero superhero : superheroes) {
+                            System.out.println(superheroes);
+                        }
+                }
             }
         }
     }
 }
-

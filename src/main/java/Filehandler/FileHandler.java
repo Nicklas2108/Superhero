@@ -4,7 +4,6 @@ import Superhero.Superhero;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class FileHandler {
@@ -32,50 +31,46 @@ public class FileHandler {
     }
 
 
-    public void saveToFile(ArrayList<Superhero> superheroes) {
+    public void saveToFile(ArrayList<Superhero> superheroList) {
+        FileWriter save;
         try {
-            PrintStream printStream = new PrintStream(file);
-            for (Superhero superhero : superheroes) {
-                printStream.println(superhero.getName() + ';' +
+            save = new FileWriter(file);
+            for (Superhero superhero : superheroList) {
+                save.write(superhero.getName() + ';' +
                         superhero.getisHuman() + ';' +
                         superhero.getSuperPower() + ';' +
                         superhero.getCreationYear() + ';' +
-                        superhero.getStrength());
+                        superhero.getStrength() + "\n");
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            save.close();
+            if (superheroList.isEmpty()){
+                System.out.println("den er tom");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-
     }
 
     public ArrayList<Superhero> loadFile() {
-        try {
-            sc = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
         ArrayList<Superhero> superheroes = new ArrayList<>();
-        while (sc.hasNextLine()) {
-            String linje = sc.nextLine();
-            String[] attributter = linje.split(";");
-
-            // er superheroes obejkter med konveterede attributter
-            Superhero indtastSuperhero = new Superhero(
-                    attributter[0], //navn
-                    Boolean.parseBoolean(attributter[1]), //is human
-                    attributter[2], //superpower
-                    Integer.parseInt(attributter[3]),// year
-                    Double.parseDouble(attributter[4]) //strength
-
-
-            );
-            //Tilføjer personobjetk i Arrwayliste
-            superheroes.add(indtastSuperhero);
-
+        try {
+            Scanner sc = new Scanner(file);
+            while (sc.hasNextLine()) {
+                String[] attribute = sc.nextLine().split(";");
+                Superhero loadSuperhero = new Superhero(
+                        attribute[0],
+                        Boolean.parseBoolean(attribute[1]),
+                        attribute[2],
+                        Integer.parseInt(attribute[3]),
+                        Double.parseDouble(attribute[4])
+                );
+                superheroes.add(loadSuperhero);
+            }
+            sc.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        sc.close();
         return superheroes;
-
     }
 }
 
